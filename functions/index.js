@@ -1,10 +1,10 @@
 const pick = require("../util/pick");
-// const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 const shouldCompress = require("../util/shouldCompress");
 const compress = require("../util/compress");
 
+const DEFAULT_QUALITY = 40;
 exports.handler = async (event, context) => {
-    const DEFAULT_QUALITY = 40;
 
     console.error("Reached here...");
     console.log(event);
@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
         statusCode: 200,
         body: JSON.stringify(event)
     }
-    const { data, type: originType } = {}/*await fetch(url, {
+    const { data, type: originType } = await fetch(url, {
         headers: {
             ...pick(event.headers, ['cookie', 'dnt', 'referer']),
             'user-agent': 'Bandwidth-Hero Compressor',
@@ -62,7 +62,7 @@ exports.handler = async (event, context) => {
             data: await res.text(),
             type: res.headers.get("content-type") || ""
         }
-    })*/
+    })
 
     const originSize = data.length;
     console.log({originType, originSize});
