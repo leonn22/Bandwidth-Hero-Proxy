@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
     }
 
     // by now, url is a string
-    url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
+    // url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
 
     const webp = !jpeg;
     const grayscale = bw != 0;
