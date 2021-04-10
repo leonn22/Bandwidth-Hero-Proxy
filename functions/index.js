@@ -5,9 +5,6 @@ const compress = require("../util/compress");
 
 const DEFAULT_QUALITY = 40;
 exports.handler = async (event, context) => {
-
-    console.error("Reached here...");
-    console.log(event);
     let { url } = event.queryStringParameters;
     const { jpeg, bw, l } = event.queryStringParameters;
 
