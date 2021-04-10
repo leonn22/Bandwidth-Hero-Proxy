@@ -31,7 +31,6 @@ exports.handler = async (event, context) => {
     const quality = parseInt(l, 10) || DEFAULT_QUALITY;
 
     console.log("Fetching...", url);
-    console.log("Fetching...", url);
     // const data = await fetch(url, {
     //     headers: {
     //         ...pick(event.headers, ['cookie', 'dnt', 'referer']),
@@ -59,7 +58,7 @@ exports.handler = async (event, context) => {
     //     // }
     // })
 
-    console.log(pick(event.headers, ['cookie', 'dnt', 'referer']))
+    // console.log(pick(event.headers, ['cookie', 'dnt', 'referer']))
     const data = ""
     const originSize = data.length ?? 2;
     console.log({originSize});
