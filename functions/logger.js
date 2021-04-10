@@ -23,8 +23,23 @@ exports.handler = async (event, context) => {
         console.error("test faile");
     }
 
+    if (!url) {
+        return {
+            statusCode: 200,
+            body: "bandwidth-hero-proxy"
+        };
+    }
+
+    try {
+        url = JSON.parse(url);  // if simple string, then will remain so 
+    } catch { }
+
+    if (Array.isArray(url)) {
+        url = url.join("&url=");
+    }
+
     return {
         statusCode: 200,
-        body: JSON.stringify({DEFAULT_QUALITY, event, context})
+        body: JSON.stringify({event, context})
     }
 }
