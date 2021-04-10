@@ -60,7 +60,7 @@ exports.handler = async (event, context) => {
     // console.log(pick(event.headers, ['cookie', 'dnt', 'referer']))
     const data = ""
     const originSize = data.length ?? 2;
-    console.log({originSize});
+    // console.log({originSize});
 
     return {
         statusCode: 200,
