@@ -23,13 +23,13 @@ exports.handler = async (event, context) => {
     // }
 
     // by now, url is a string
-    url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
+    // url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
 
-    const webp = !jpeg;
-    const grayscale = bw != 0;
-    const quality = parseInt(l, 10) || DEFAULT_QUALITY;
+    // const webp = !jpeg;
+    // const grayscale = bw != 0;
+    // const quality = parseInt(l, 10) || DEFAULT_QUALITY;
 
-    console.log("Fetching...", url, webp, grayscale, quality);
+    // console.log("Fetching...", url, webp, grayscale, quality);
     // const data = await fetch(url, {
     //     headers: {
     //         ...pick(event.headers, ['cookie', 'dnt', 'referer']),
@@ -58,9 +58,9 @@ exports.handler = async (event, context) => {
     // })
 
     // console.log(pick(event.headers, ['cookie', 'dnt', 'referer']))
-    const data = ""
-    const originSize = data.length ?? 2;
-    console.log({originSize});
+    // const data = ""
+    // const originSize = data.length ?? 2;
+    // console.log({originSize});
 
     return {
         statusCode: 200,
