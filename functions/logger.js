@@ -14,7 +14,9 @@ exports.handler = async (event, context) => {
 
     try {
         url = JSON.parse(url);  // if simple string, then will remain so 
-    } catch { }
+    } catch (err) {
+        console.log("Erorr")
+    }
 
     // if (Array.isArray(url)) {
     //     url = url.join("&url=");
@@ -27,7 +29,7 @@ exports.handler = async (event, context) => {
     const grayscale = bw != 0;
     const quality = parseInt(l, 10) || DEFAULT_QUALITY;
 
-    console.log("Fetching...", url);
+    console.log("Fetching...", url, webp, grayscale, quality);
     // const data = await fetch(url, {
     //     headers: {
     //         ...pick(event.headers, ['cookie', 'dnt', 'referer']),
