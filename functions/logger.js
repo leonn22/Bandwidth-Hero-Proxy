@@ -31,7 +31,8 @@ exports.handler = async (event, context) => {
     const quality = parseInt(l, 10) || DEFAULT_QUALITY;
 
     console.log("Fetching...", url);
-    const { data, type: originType } = await fetch(url, {
+    console.log("Fetching...", url);
+    const data = await fetch(url, {
         headers: {
             ...pick(event.headers, ['cookie', 'dnt', 'referer']),
             'user-agent': 'Bandwidth-Hero Compressor',
@@ -44,21 +45,22 @@ exports.handler = async (event, context) => {
         // strictSSL: false,
         // gzip: true,
         // jar: true
-    }).then(async res => {
+    }).then( res => {
         if (!res.ok){
             return {
                 statusCode: res.status ?? 302
             }
         }
 
-        return {
-            data: await res.text(),
-            type: res.headers.get("content-type") || ""
-        }
+        return res.text();
+        // return {
+        //     data: await res.text(),
+        //     type: res.headers.get("content-type") || ""
+        // }
     })
 
     const originSize = data.length;
-    console.log({originType, originSize});
+    console.log({originSize});
 
     return {
         statusCode: 200,
