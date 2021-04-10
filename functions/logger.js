@@ -32,34 +32,36 @@ exports.handler = async (event, context) => {
 
     console.log("Fetching...", url);
     console.log("Fetching...", url);
-    const data = await fetch(url, {
-        headers: {
-            ...pick(event.headers, ['cookie', 'dnt', 'referer']),
-            'user-agent': 'Bandwidth-Hero Compressor',
-            'x-forwarded-for': event.headers['x-forwarded-for'] || event.ip,
-            via: '1.1 bandwidth-hero'
-        }
-        // timeout: 10000,
-        // maxRedirects: 5,
-        // encoding: null,
-        // strictSSL: false,
-        // gzip: true,
-        // jar: true
-    }).then( res => {
-        if (!res.ok){
-            return {
-                statusCode: res.status ?? 302
-            }
-        }
+    // const data = await fetch(url, {
+    //     headers: {
+    //         ...pick(event.headers, ['cookie', 'dnt', 'referer']),
+    //         'user-agent': 'Bandwidth-Hero Compressor',
+    //         'x-forwarded-for': event.headers['x-forwarded-for'] || event.ip,
+    //         via: '1.1 bandwidth-hero'
+    //     }
+    //     // timeout: 10000,
+    //     // maxRedirects: 5,
+    //     // encoding: null,
+    //     // strictSSL: false,
+    //     // gzip: true,
+    //     // jar: true
+    // }).then( res => {
+    //     if (!res.ok){
+    //         return {
+    //             statusCode: res.status ?? 302
+    //         }
+    //     }
 
-        return res.text();
-        // return {
-        //     data: await res.text(),
-        //     type: res.headers.get("content-type") || ""
-        // }
-    })
+    //     return res.text();
+    //     // return {
+    //     //     data: await res.text(),
+    //     //     type: res.headers.get("content-type") || ""
+    //     // }
+    // })
 
-    const originSize = data.length;
+    console.log(pick(event.headers, ['cookie', 'dnt', 'referer']))
+    const data = ""
+    const originSize = data.length ?? 2;
     console.log({originSize});
 
     return {
