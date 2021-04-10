@@ -34,10 +34,6 @@ exports.handler = async (event, context) => {
     const quality = parseInt(l, 10) || DEFAULT_QUALITY;
 
     console.log("Fetching...", url);
-    return {
-        statusCode: 200,
-        body: JSON.stringify(event)
-    }
     const { data, type: originType } = await fetch(url, {
         headers: {
             ...pick(event.headers, ['cookie', 'dnt', 'referer']),
