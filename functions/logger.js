@@ -9,22 +9,19 @@ exports.handler = async (event, context) => {
     const { jpeg, bw, l } = event.queryStringParameters;
 
     if (!url) {
-        return {
-            statusCode: 200,
-            body: "bandwidth-hero-proxy"
-        };
+        url = "https://www.boringcactus.com/assets/2020-08-21-survey-of-rust-gui-libraries-6.png"
     }
 
     try {
         url = JSON.parse(url);  // if simple string, then will remain so 
     } catch { }
 
-    if (Array.isArray(url)) {
-        url = url.join("&url=");
-    }
+    // if (Array.isArray(url)) {
+    //     url = url.join("&url=");
+    // }
 
     // by now, url is a string
-    // url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
+    url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
 
     const webp = !jpeg;
     const grayscale = bw != 0;
