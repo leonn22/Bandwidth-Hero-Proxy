@@ -9,6 +9,20 @@ exports.handler = async (event, context) => {
     let { url } = event.queryStringParameters;
     const { jpeg, bw, l } = event.queryStringParameters;
 
+    try {
+        if( true )
+            throw Error("Hi");
+    } catch (err) {
+        console.error(err);
+    }
+
+    try {
+        if( true )
+            throw Error("Test");
+    } catch {
+        console.error("test faile");
+    }
+
     return {
         statusCode: 200,
         body: JSON.stringify({DEFAULT_QUALITY, event, context})
